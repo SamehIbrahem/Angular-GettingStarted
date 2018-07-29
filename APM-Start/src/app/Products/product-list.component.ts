@@ -20,8 +20,9 @@ export class ProductListComponent implements OnInit {
     this._listFilter = value;
     this.filteredProducts = this._listFilter ? this.performFilter(this._listFilter) : this.products;
   }
+  errorMessage: string;
   filteredProducts: IProduct[];
-  products: IProduct[] ;
+  products: IProduct[];
   constructor(private productService: ProductService) {
   }
 
@@ -34,8 +35,15 @@ export class ProductListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
   ngOnInit(): void {
-    this.products = this.productService.getProducts(); 
-    this.filteredProducts = this.products;
+    this.productService.getProducts().subscribe(
+      products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      }
+      ,
+      error => this.errorMessage = <any>error
+    );
+    
   }
   onRatingClicked(message: string): void {
     this.pageTitle = 'Product List: ' + message;
