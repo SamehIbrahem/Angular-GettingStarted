@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './Products/product-list.component';
+import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/StarComponent';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailComponent } from './products/product-detail.component'
 import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router'
-import { ProductDetailGuard } from './Products/product-detail.guard';
+import { ProductDetailGuard } from './products/product-detail.guard';
 @NgModule({
     declarations: [
         AppComponent,
